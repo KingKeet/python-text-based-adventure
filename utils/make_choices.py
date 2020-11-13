@@ -50,7 +50,7 @@ def list_option_var(inputstr, choices, aliases=None, use_first_letter=True):
     selection = None
     for choice in choices:
         if inputstr.lower().find(choice.lower()) > 0:
-            if selection is not None:
+            if selection is None:
                 selection = choice
             else:
                 selection = None
@@ -67,7 +67,7 @@ def list_option_var(inputstr, choices, aliases=None, use_first_letter=True):
 
         for choice in aliases:
             if inputstr.lower().find(choice.lower()) > 0:
-                if selection is not None:
+                if selection is None:
                     selection = choice
                 else:
                     selection = None
