@@ -1,5 +1,4 @@
-from scenes import left_or_right as lr, three_doors as doors
-from utils import errors as err, make_choices as mc
+from scenes.ExampleScenes import three_doors as doors, left_or_right as lr
 
 
 def main():
