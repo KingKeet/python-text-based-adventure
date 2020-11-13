@@ -41,7 +41,7 @@ def list_option_novar(inputstr, choices):
     raise NoSuchOption
 
 
-def list_option_var(inputstr, choices):
+def list_option_var(inputstr, choices, aliases=None, use_first_letter=True):
     try:
         return list_option_novar(inputstr, choices)
     except NoSuchOption:
@@ -59,13 +59,32 @@ def list_option_var(inputstr, choices):
     if selection is not None:
         return selection
 
-    for choice in choices:
-        if inputstr.lower()[0] == choice.lower()[0]:
-            if selection is not None:
-                selection = choice
-            else:
-                raise NoSuchOption
+    if aliases is not None and len(choices) == len(aliases):
+        try:
+            return list_option_novar(inputstr, aliases)
+        except NoSuchOption:
+            pass
 
-    if selection is not None:
-        return selection
+        for choice in aliases:
+            if inputstr.lower().find(choice.lower()) > 0:
+                if selection is not None:
+                    selection = choice
+                else:
+                    selection = None
+                    break
+
+        if selection is not None:
+            return selection
+
+    if use_first_letter:
+        for choice in choices:
+            if inputstr.lower()[0] == choice.lower()[0]:
+                if selection is not None:
+                    selection = choice
+                else:
+                    raise NoSuchOption
+
+        if selection is not None:
+            return selection
+
     raise NoSuchOption
