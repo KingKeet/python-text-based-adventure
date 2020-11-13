@@ -20,11 +20,13 @@ def binary_option_var(inputstr, choice1, choice2):
         return choice1
     elif inputstr.lower().find(choice1.lower()) < 0 < inputstr.lower().find(choice2.lower()):
         return choice2
-    elif choice1[0].lower() != choice2[0].lower():
+    elif inputstr.lower().find(choice1.lower()) > 0 < inputstr.lower().find(choice2.lower()):
+        raise NoSuchOption
+    elif choice1[0].lower() != choice2[0].lower() and len(inputstr) == 1:
 
-        if inputstr[0].lower() == choice1.lower():
+        if inputstr[0].lower() == choice1[0].lower():
             return choice1
-        elif inputstr[0].lower() == choice2.lower():
+        elif inputstr[0].lower() == choice2[0].lower():
             return choice2
 
     else:

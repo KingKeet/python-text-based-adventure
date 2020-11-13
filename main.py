@@ -7,6 +7,7 @@ def main():
     print("Onto the first room!\n\n")
 
     lr.left_or_right()
+    lr.left_or_right_var()
 
     print("Thanks for playing!\n")
     print("That's all we've got for now, check back later for more!\n")
