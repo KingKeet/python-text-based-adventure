@@ -8,3 +8,62 @@ def binary_option_novar(inputstr, choice1, choice2):
         return choice2
     else:
         raise NoSuchOption
+
+
+def binary_option_var(inputstr, choice1, choice2):
+    try:
+        return binary_option_novar(inputstr, choice1, choice2)
+    except NoSuchOption:
+        pass
+
+    if inputstr.lower().find(choice1.lower()) > 0 > inputstr.lower().find(choice2.lower()):
+        return choice1
+    elif inputstr.lower().find(choice1.lower()) < 0 < inputstr.lower().find(choice2.lower()):
+        return choice2
+    elif choice1[0].lower() != choice2[0].lower():
+
+        if inputstr[0].lower() == choice1.lower():
+            return choice1
+        elif inputstr[0].lower() == choice2.lower():
+            return choice2
+
+    else:
+        raise NoSuchOption
+
+
+def list_option_novar(inputstr, choices):
+    for choice in choices:
+        if inputstr.lower() == choice.lower():
+            return choice
+
+    raise NoSuchOption
+
+
+def list_option_var(inputstr, choices):
+    try:
+        return list_option_novar(inputstr, choices)
+    except NoSuchOption:
+        pass
+
+    selection = None
+    for choice in choices:
+        if inputstr.lower().find(choice.lower()) > 0:
+            if selection is not None:
+                selection = choice
+            else:
+                selection = None
+                break
+
+    if selection is not None:
+        return selection
+
+    for choice in choices:
+        if inputstr.lower()[0] == choice.lower()[0]:
+            if selection is not None:
+                selection = choice
+            else:
+                raise NoSuchOption
+
+    if selection is not None:
+        return selection
+    raise NoSuchOption
