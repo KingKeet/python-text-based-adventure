@@ -1,4 +1,4 @@
-from scenes import left_or_right as lr
+from scenes import left_or_right as lr, three_doors as doors
 from utils import errors as err, make_choices as mc
 
 
@@ -8,6 +8,8 @@ def main():
 
     lr.left_or_right()
     lr.left_or_right_var()
+    doors.three_doors()
+    doors.three_doors_var()
 
     print("Thanks for playing!\n")
     print("That's all we've got for now, check back later for more!\n")
