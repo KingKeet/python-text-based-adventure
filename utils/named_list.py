@@ -12,3 +12,6 @@ class NamedList:
         self.names.append(name)
         self.values.append(value)
         return 1
+
+    def to_string(self):
+        return self.title
