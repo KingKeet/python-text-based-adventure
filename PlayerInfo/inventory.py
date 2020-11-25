@@ -2,7 +2,7 @@ from utils.errors import InventoryFullException, NoSuchOption
 
 
 class Inventory:
-    def __init__(self, max_weight):
+    def __init__(self, max_weight=15):
         self.items = []
         self.current_weight = 0
         self.max_weight = max_weight
