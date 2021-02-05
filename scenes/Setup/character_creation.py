@@ -1,4 +1,5 @@
 from PlayerInfo.player_character import Player
+from PlayerInfo.race_database import Race, print_races
 
 
 def wait():
@@ -12,8 +13,26 @@ def character_creator(gamestate):
     wait()
 
     name = input("Tell me, what is your name?\t")
-    player = Player(name)
+    print("I see I see... so... ")
+    race = None
 
-    print("Alright " + name + ", I think we're just about ready to begin!")
+    while True:
+        print("who are your people?\n\nPlease select one of the following:\n")
+        print_races()
+        race = int(input())
+        for r in Race:
+            if race == r.value:
+                race = r
+                break
+
+        if not isinstance(race, Race):
+            print("I'm sorry, I didn't catch that... ")
+            continue
+        else:
+            break
+
+    player = Player(name, race)
+
+    print(f"Alright {name} the {race.name}, I think we're just about ready to begin!")
     wait()
     print("Ok then! Let's begin!")
