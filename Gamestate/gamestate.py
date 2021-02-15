@@ -1,5 +1,5 @@
 from utils.named_list import NamedList
-from room_data import Rooms as rm
+from .room_data import Rooms as rm
 
 
 class Gamestate(NamedList):
