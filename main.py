@@ -1,5 +1,7 @@
 from scenes.ExampleScenes import three_doors as doors, left_or_right as lr
 from scenes.Setup import character_creation as cc
+from PlayerInfo.player_character import Player
+from Gamestate import gamestate as gs, room_data as rm
 
 
 def examples():
@@ -16,8 +18,10 @@ def examples():
 
 
 def main():
+    state = gs.Gamestate()
+
     print("Welcome to the trial of my python text-based adventure!\n\n")
-    cc.character_creator(None)
+    cc.character_creator(state)
 
 
 if __name__ == '__main__':

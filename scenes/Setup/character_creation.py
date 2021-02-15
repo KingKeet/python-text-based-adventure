@@ -32,6 +32,7 @@ def character_creator(gamestate):
             break
 
     player = Player(name, race)
+    gamestate.update('player', player)
 
     print(f"Alright {name} the {race.name}, I think we're just about ready to begin!")
     wait()
