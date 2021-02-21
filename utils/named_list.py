@@ -13,5 +13,8 @@ class NamedList:
         self.values.append(value)
         return 1
 
+    def update(self, name, value):
+        self.values[self.names.index(name)] = value
+
     def to_string(self):
         return self.title
